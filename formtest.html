@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Form Test Page</title>
+</head>
+
+<body>
+    <label>Name</label><input id="namebox" type="text">
+    <label>Email</label><input id="emailbox" type="text">
+    <label>Subject</label><input id="subbox" type="text">
+    <label>Message</label><input id="messagebox" type="text">
+
+
+    <button id="InsertData">Insert</button>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNpanqIxjZjTacjFIWYqA5rJjuDpSDwiI",
+            authDomain: "parbyte-60861.firebaseapp.com",
+            projectId: "parbyte-60861",
+            storageBucket: "parbyte-60861.appspot.com",
+            messagingSenderId: "880383708984",
+            appId: "1:880383708984:web:20c743ee56cc0036d03bcd",
+            measurementId: "G-9JHLPHJNL2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+       
+        var firebaseref = app.database().ref("emails");
+       
+        document.querySelector('#InsertData').addEventListener('click', ()=>{
+            const email = document.getElementById('namebox').value;
+           app.push(email);
+            alert("successfully");
+        });
+    </script>
+</body>
+
+</html>
