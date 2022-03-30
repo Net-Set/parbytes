@@ -82,11 +82,11 @@
                             <h1 class="text-white animated slideInDown">Contact</h1>
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
+                                <!-- <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                                     <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                                     <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                                </ol>
+                                </ol> -->
                             </nav>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" id="submit">Send Message</button>
+                                        <button class="btn btn-primary w-100 py-3" id="submits">Send Message</button>
                                     </div>
                                 </div>
                             </form>
@@ -152,51 +152,59 @@
         <!-- Contact End -->
         <!-- Javascript Firebase through database store -->
        
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyC65eml2kWUexziEef1iHOw_0kes-Skx6U",
+              authDomain: "parbyte-cb01d.firebaseapp.com",
+              projectId: "parbyte-cb01d",
+              storageBucket: "parbyte-cb01d.appspot.com",
+              messagingSenderId: "833711683294",
+              appId: "1:833711683294:web:8c89d734dd91db3c1b744f",
+              measurementId: "G-XVQRV0KTMV"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            import {getDatabase, ref, set, child,update,remove}
+            from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
+            const analytics = getAnalytics(app);
+            const db = getDatabase();
 
-<script type="module">
-   // Import the functions you need from the SDKs you need
-   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDHyXC8ynPMAj7yUxMIp9kKRCxW7kblY_4",
-    authDomain: "parbyte-daaa1.firebaseapp.com",
-    databaseURL: "https://parbyte-daaa1-default-rtdb.firebaseio.com",
-    projectId: "parbyte-daaa1",
-    storageBucket: "parbyte-daaa1.appspot.com",
-    messagingSenderId: "98530235935",
-    appId: "1:98530235935:web:b5601b5047b71bd7ebe72a",
-    measurementId: "G-QRQ2Q92ZZG"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  var namebox = document.getElementById("name").value;
-  var emailbox = document.getElementById("email").value;
-  var subjectbox = document.getElementById("subject").value;
-  var messagebox = document.getElementById("message").value;
-
-
-  var insBtn = document.getElementById("submit");
-
-
-  function writeUserData(namebox, emailbox, subjectbox, messagebox) {
-
-  set(ref(analytics, 'users/' + emailbox), {
-    username: namebox,
-    email: emailbox,
-    profile_picture : messagebox
-  });
-}
+            var namedb = document.getElementById("name");
+            var emaildb = document.getElementById("email");
+            var subjectdb = document.getElementById("subject");
+            var messagedb = document.getElementById("message");
 
 
-  insBtn.addEventListener('click',InsertData);
-</script>
+            var submitdb = document.getElementById("submits");
+
+
+            function InsertData(){
+                set(ref(db,"user/" + emaildb.value),{
+                    Name: namedb.value,
+                    Email: emaildb.value,
+                    Subject: subjectdb.value,
+                    Message: messagedb.value
+                })
+                .then(()=> {
+                    alert("Successfully");
+                })
+                .catch((error)=>{
+                    alert("unsccessfully, error"+error);
+                });
+            }
+            submitdb.addEventListener('click',InsertData);
+
+
+          </script>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
@@ -204,18 +212,17 @@
                 <div class="row g-5">
                     <div class="col-md-7 col-lg-4">
                         <p class="section-title text-white h5 mb-4">Address<span></span></p>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p><i class="fa fa-map-marker-alt me-3"></i>1512, 15th Floor,
+                            Office no.12,Bule Bay Tower,
+                            Business Bay, Dubai, U.A.E
+                            </p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+971 55 855 4258</p>
+                        <p><i class="fa fa-phone-alt me-3"></i>+918 78 071 9280</p>
                         <p><i class="fa fa-envelope me-3"></i>parbytetechno@gmail.com</p>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href="https://twitter.com/parbyte_techno"><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social"
-                                href="https://www.facebook.com/Parbyte-Technologies-101530419172444"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social"
-                                href="https://www.instagram.com/parbyte_technologies/"><i
-                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://twitter.com/parbyte_techno"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/Parbyte-Technologies-101530419172444"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/parbyte_technologies/"><i class="fab fa-instagram"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
