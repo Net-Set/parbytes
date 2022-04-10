@@ -107,11 +107,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">The contact form is currently inactive. Get a functional and
-                                working contact form with Ajax & PHP in a few minutes. Just copy and paste the files,
-                                add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download
-                                    Now</a>.</p>
-                            <form>
+      
+                            <form action="" id="contactform">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
@@ -140,7 +137,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" id="submits">Send Message</button>
+                                        <button class="btn btn-primary w-100 py-3"type="submit"  id="submit">Send Message</button>
                                     </div>
                                 </div>
                             </form>
@@ -151,60 +148,9 @@
         </div>
         <!-- Contact End -->
         <!-- Javascript Firebase through database store -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        <script src="./mail.js"></script>
        
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-          
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-              apiKey: "AIzaSyC65eml2kWUexziEef1iHOw_0kes-Skx6U",
-              authDomain: "parbyte-cb01d.firebaseapp.com",
-              projectId: "parbyte-cb01d",
-              storageBucket: "parbyte-cb01d.appspot.com",
-              messagingSenderId: "833711683294",
-              appId: "1:833711683294:web:8c89d734dd91db3c1b744f",
-              measurementId: "G-XVQRV0KTMV"
-            };
-          
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            import {getDatabase, ref, set, child,update,remove}
-            from "https://www.gstatic.com/firebasejs/9.6.9/firebase-database.js";
-            const analytics = getAnalytics(app);
-            const db = getDatabase();
-
-            var namedb = document.getElementById("name");
-            var emaildb = document.getElementById("email");
-            var subjectdb = document.getElementById("subject");
-            var messagedb = document.getElementById("message");
-
-
-            var submitdb = document.getElementById("submits");
-
-
-            function InsertData(){
-                set(ref(db,"user/" + emaildb.value),{
-                    Name: namedb.value,
-                    Email: emaildb.value,
-                    Subject: subjectdb.value,
-                    Message: messagedb.value
-                })
-                .then(()=> {
-                    alert("Successfully");
-                })
-                .catch((error)=>{
-                    alert("unsccessfully, error"+error);
-                });
-            }
-            submitdb.addEventListener('click',InsertData);
-
-
-          </script>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
