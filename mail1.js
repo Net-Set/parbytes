@@ -3,16 +3,14 @@ const firebaseConfig = {
     // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
  
-  apiKey: "AIzaSyD77aq4fartwOcirmZxKN2JVGqeOAaP_R8",
-  authDomain: "parbyteemail.firebaseapp.com",
-  databaseURL: "https://parbyteemail-default-rtdb.firebaseio.com",
-  projectId: "parbyteemail",
-  storageBucket: "parbyteemail.appspot.com",
-  messagingSenderId: "365498375529",
-  appId: "1:365498375529:web:579ca4c5327ef253e171f8",
-  measurementId: "G-EF450C73J6"
- 
-
+  apiKey: "AIzaSyAT8C9ebCF4ayb67vgaU-PLwwFVViy-G_M",
+  authDomain: "parbyteemail-b252f.firebaseapp.com",
+  databaseURL: "https://parbyteemail-b252f-default-rtdb.firebaseio.com",
+  projectId: "parbyteemail-b252f",
+  storageBucket: "parbyteemail-b252f.appspot.com",
+  messagingSenderId: "973948075918",
+  appId: "1:973948075918:web:5f9bb70efadf28d703aedf",
+  measurementId: "G-TYMXSMJ6H5"
   };
   
   // initialize firebase
@@ -34,13 +32,12 @@ const firebaseConfig = {
       //   reset the form
       document.getElementById("email").value = "";
     
-    //   enable alert
-    document.querySelector(".alert").style.display = "block";
+   
   
     //   remove the alert
-    setTimeout(() => {
-      document.querySelector(".alert").style.display = "none";
-    }, 3000);
+    // setTimeout(() => {
+    //   document.querySelector(".alert").style.display = "none";
+    // }, 3000);
   
     
   }
